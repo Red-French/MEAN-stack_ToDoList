@@ -1,8 +1,6 @@
 'use strict';
 // ROUTER
 
-// TODO: Add DELETE route to delete entires
-
 var express = require ('express');
 var router = express.Router();
 var Todo = require('../models/todo');  // capitalizing the variable is convention when referencing a model, class or constructor function in JavaScript
