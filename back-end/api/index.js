@@ -38,6 +38,7 @@ router.post('/todos', (req, res) => {  // first parameter is the URL of the requ
   });
 });
 
+// UPDATE
 router.put('/todos/:id', (req, res) => {  // add an id parameter for the put route; the syntax for adding parameters is colon then parameter name
   var id = req.params.id;  // get the id key from the req.params object (this is handled by Express)
   var todo = req.body;  // the data for the todo
@@ -56,6 +57,7 @@ router.put('/todos/:id', (req, res) => {  // add an id parameter for the put rou
   });
 });
 
+// DELETE
 router.delete('/todos/:id', function(req, res) {  // add an id parameter for the put route; the syntax for adding parameters is colon then parameter name
   var id = req.params.id;  // get the id key from the req.params object (this is handled by Express)
   Todo.findByIdAndRemove(id, function(err, result) {  // The Mongoose model has a 'findByIdAndRemove' method
