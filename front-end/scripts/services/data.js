@@ -5,10 +5,13 @@ var angular = require('angular');
 
 angular.module('todoListApp')
 .service('dataService', function($http, $q) {  // use Angular's $q provider to bundle/manage requests to the server
+
+  // READ
   this.getTodos = function(cb) {
     $http.get('/api/todos').then(cb);  // this is the route set up in the server and api/index.js
   };
 
+  // DELETE
   this.deleteTodo = function(todo) {
     if (!todo._id) {  // if todo does not have an id then...
       return $q.resolve();
@@ -18,12 +21,14 @@ angular.module('todoListApp')
     });
   };
 
+  // CREATE
   this.saveTodos = function(todos) {
     var queue = [];  // create an array of requests
     todos.forEach(function(todo) {  // for each todo, push a request for posting the data to the server to the queue array
       var request;
       if(!todo._id) {  // if todo does not have an id then...
         request = $http.post('/api/todos', todo)  // the request = the route and the body of the request (the todo)
+  // UPDATE
       } else {  // HANDLE UPDATES - if the todo does have an id
         request = $http.put('/api/todos/' + todo._id, todo).then(function(result) {  // append with the todo id
           todo = result.data.todo;
