@@ -1,4 +1,5 @@
 'use strict';
+// SERVICES/DATA (CONNECT TO API BACK-END)
 
 var angular = require('angular');
 
